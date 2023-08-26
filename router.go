@@ -21,7 +21,8 @@ func initRouter(r *gin.Engine) {
 	// auth service
 	userGroup.POST("/register/", handler.Register)
 	userGroup.POST("/login/", handler.Login)
-
+	userGroup.POST("/auth", handler.AuthHandler)
+	userGroup.GET("/home", handler.AuthMiddleware)
 	// favotite&comment service
 	favoriteGroup := douyin.Group("/favotite")
 	favoriteGroup.POST("/action/", handler.FavoriteAction)
