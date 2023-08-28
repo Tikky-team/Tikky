@@ -170,9 +170,8 @@ func PublishList(c *gin.Context) {
 		})
 		return
 	}
-	count, _ := strconv.Atoi(strconv.FormatInt(userinfo.WorkCount, 10))
 	var video []model.Video
-	err = db.Db.Table("videos").Limit(count).Where("user_id = ?", userinfo.ID).Find(&video)
+	err = db.Db.Table("videos").Where("user_id = ?", userinfo.ID).Find(&video)
 	if err.Error != nil {
 		message := "Failed to search Video list"
 		c.JSON(http.StatusInternalServerError, Response{
