@@ -98,7 +98,7 @@ func GetCover(filePath string, host string) (coverurl string, err error) {
 	)
 	inputFile := filePath
 	imagename := ksuid.New().String()
-	outfile := filepath.Join("/douyin/publish/list/", imagename+"."+imageFormat)
+	outfile := filepath.Join("cover", imagename+"."+imageFormat)
 	dir := filepath.Dir(outfile)
 	err = os.MkdirAll(dir, os.FileMode(0755))
 	if err != nil {
@@ -130,7 +130,7 @@ func VideoConvert(filePath string, host string) (palyurl string, err error) {
 	const videoFormat = "mp4"
 	inputFile := filePath
 	filename := ksuid.New().String()
-	outfile := filepath.Join("/douyin/publish/action/", filename+"."+videoFormat)
+	outfile := filepath.Join("play", filename+"."+videoFormat)
 	dir := filepath.Dir(outfile)
 	err = os.MkdirAll(dir, os.FileMode(0755))
 	if err != nil {

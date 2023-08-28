@@ -13,7 +13,8 @@ func initRouter(r *gin.Engine) {
 	publishGroup := douyin.Group("/publish")
 	publishGroup.POST("/action/", handler.PublishAction)
 	publishGroup.GET("/list", handler.PublishList)
-
+	r.Static("/cover", "./cover") //获取视频封面
+	r.Static("/play", "./play")   //获取视频
 	// user service
 	userGroup := douyin.Group("/user")
 	userGroup.GET("/", handler.GetUserInfo)
